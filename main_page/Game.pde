@@ -18,14 +18,19 @@ class Game {
   frameRate(10);
    //String url = "https://d31xsmoz1lk3y3.cloudfront.net/games/images/1446677138_Find_the_US_States";
    //mapa = loadImage(url);
-    background(60);
-    image(us, 0, 0, us.width*1.5, us.height*1.5);
+   
 }
 
 void drawPoints() {
  //for (int i = 0; i < data.getRowCount(); i ++) {
    //wait(5);
-
+      if (i == 0) {
+         background(60);
+         image(us, 0, 0, us.width*1.5, us.height*1.5);
+             i ++;
+  }
+        else {
+          
   y = map(data.getFloat(i, 5), 27.994402, 47.751076, us.height*1.15, 0);
   x = map(data.getFloat(i, 6), -120.500000, -68.972168, 0, us.width*1.30);
   noStroke();
@@ -33,6 +38,7 @@ void drawPoints() {
   if (i%2==0) {
     //image(ufo, x+130, y + 60, 50,50);
     triangle1(int(x+130), int(y + 60), 15);
+
 
   } else {
     //image(ufo, x+130, y + 60, 50,50);
@@ -54,7 +60,7 @@ void drawPoints() {
     noLoop();
   }
 }
-//}
+}
 
 void triangle1(int x, int y, int h)
 {

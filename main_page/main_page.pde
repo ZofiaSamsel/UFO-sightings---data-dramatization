@@ -44,12 +44,13 @@ void setup() {
   frameRate(10);
    //String url = "https://d31xsmoz1lk3y3.cloudfront.net/games/images/1446677138_Find_the_US_States";
    //mapa = loadImage(url);
+  
 
-
+    
 
 }
 
-
+boolean klikniety = false;
 void draw() {
 
   if(start) {
@@ -61,19 +62,23 @@ void draw() {
     game2.update();
     game2.render();
   }
+
+
+  
   
   if(launch.isClicked())
   {
-    
+        
   }
   
 
   
   if(game1.isClicked())
   {
+
     print(i);
     start = false;
-    game.setup();
+    //game.setup();
     game.drawPoints();
 
   }
