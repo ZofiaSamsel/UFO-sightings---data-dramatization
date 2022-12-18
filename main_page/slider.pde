@@ -15,7 +15,6 @@ class Slider {
   int nsteps;             // number of steps
   
   float step;               // which step
-  int stepwidth;          // width of one step
   boolean over;           // is the mouse over the slider?
   boolean locked;
 
@@ -33,9 +32,9 @@ class Slider {
     sposMax = xpos + swidth - sheight;
   }
 
-//============================================================================================= 
-//                    updates slider position, over event, lock event (is the mouse clicked)
-//=============================================================================================
+// ============================================================================================= 
+//  updates slider position, over event, lock event (is the mouse clicked)
+// =============================================================================================
   void update() {
     if (overEvent()) {
       over = true;
@@ -57,11 +56,12 @@ class Slider {
   }
   
  
-//============================================================================================= 
-//                    returns step over which the slider should be displayed
-//=============================================================================================
+// ============================================================================================= 
+//  returns step over which the slider should be displayed
+// =============================================================================================
   float step(){
     float temp = (sposMax-sposMin)/(nsteps-1);
+    print(temp);
     step = sposMin;
       
     for (int i = 1; i < nsteps; i++){
@@ -72,9 +72,9 @@ class Slider {
     return step;
   }
   
-//============================================================================================= 
-//                    returns if mouse is over slidebar 
-//=============================================================================================
+// ============================================================================================= 
+//  returns if mouse is over slidebar 
+// =============================================================================================
   boolean overEvent() {
     if (mouseX > xpos && mouseX < xpos+swidth &&
       mouseY > ypos && mouseY < ypos+sheight) {
@@ -85,22 +85,22 @@ class Slider {
   }
 
 
-//============================================================================================= 
-//                    displays slider
-//=============================================================================================
+// ============================================================================================= 
+//  displays slider
+// =============================================================================================
   void display() {
 // slider bar
     noStroke();
-    fill(204);
-    rect(xpos, ypos, swidth, sheight);
+    fill(#00F712);
+    rect(xpos-swidth/nsteps, ypos, swidth+swidth/nsteps, sheight);
     
 // step lines    
-    fill(0);
-    rect(xpos, ypos, 5, sheight);
-    for(int i = 1; i < nsteps; i++){
-      fill(0);
-      rect(i*(sposMax+sheight-sposMin)/(nsteps-1)+xpos, ypos, 5, sheight);
-    }
+    //fill(0);
+    //rect(xpos, ypos+sheight, 2, sheight);
+    //for(int i = 1; i < nsteps; i++){
+    //  fill(0);
+    //  rect(i*(sposMax-sposMin)/nsteps+xpos, ypos+sheight, 2, sheight);
+    //}
 
 // slider    
     if (over || locked) {
@@ -108,27 +108,37 @@ class Slider {
     } else {
       fill(70);
     }
-    rect(spos, ypos, sheight, sheight);
-  }
+    
+    rect(spos, ypos, swidth/nsteps, sheight);
+ }
 
 
 //============================================================================================= 
-//                    changes start and stop variables accordingly to slider position
+//  changes start and stop variables accordingly to slider position
 //=============================================================================================
 // 1, 59, 137, 201, 279, 398, 526, 658, 931, 1244, 1746
   void getPos() {
     for(int i = 0; i < nsteps; i++){
       if(spos == i*(sposMax-sposMin)/(nsteps-1)+xpos){
-        start = values[i];
-        stop = values[i+1];
+        starts = values[i];
+        stops = values[i+1];
         return;
       }
     }
   }
   
 //============================================================================================= 
-//                    displays year of the ufo sightings
+//  displays year of the ufo sightings
 //=============================================================================================
   void displayYear(){
+    fill(0);
+    textFont(font);
+    textSize(40);
+    for(int i = 0; i < nsteps; i++){
+      if(spos == i*(sposMax-sposMin)/(nsteps-1)+xpos){
+        text("199"+str(i), xpos-103, ypos+sheight/1.5);
+        return;
+      }
+    }
   }
 }
