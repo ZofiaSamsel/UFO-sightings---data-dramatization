@@ -11,7 +11,7 @@ class Slider {
   int swidth, sheight;    // width and height of bar
   float xpos, ypos;       // x and y position of bar
   float spos, newspos;    // x position of slider
-  float sposMin, sposMax; // max and min values of slider
+  final float sposMin, sposMax; // max and min values of slider
   int nsteps;             // number of steps
   
   float step;               // which step
@@ -65,8 +65,8 @@ class Slider {
     step = sposMin;
       
     for (int i = 1; i < nsteps; i++){
-      if(mouseX > i*temp+100 - temp/2 && mouseX < i*temp+100 + temp/2){
-        step = i*temp+100;
+      if(mouseX > i*temp+xpos - temp/2 && mouseX < i*temp+xpos + temp/2){
+        step = i*temp+xpos;
       }
     }
     return step;
@@ -96,10 +96,10 @@ class Slider {
     
 // step lines    
     fill(0);
-    rect(100, ypos, 5, sheight);
+    rect(xpos, ypos, 5, sheight);
     for(int i = 1; i < nsteps; i++){
       fill(0);
-      rect(i*(sposMax+sheight-sposMin)/(nsteps-1)+100, ypos, 5, sheight);
+      rect(i*(sposMax+sheight-sposMin)/(nsteps-1)+xpos, ypos, 5, sheight);
     }
 
 // slider    
@@ -115,49 +115,14 @@ class Slider {
 //============================================================================================= 
 //                    changes start and stop variables accordingly to slider position
 //=============================================================================================
+// 1, 59, 137, 201, 279, 398, 526, 658, 931, 1244, 1746
   void getPos() {
-    int pos = int(spos);
-    switch(pos){
-    case 100:
-      start = 1;
-      stop = 59;
-      return;
-    case 289:
-      start = 59;
-      stop = 137;
-      return;
-    case 478:
-      start = 137;
-      stop = 201;
-      return;
-    case 668:
-      start = 201;
-      stop = 279;
-      return;
-    case 857:
-      start = 279;
-      stop = 398;
-      return;
-    case 1046:
-      start = 398;
-      stop = 526;
-      return;
-    case 1236:
-      start = 526;
-      stop = 658;
-      return;
-    case 1425:
-      start = 658;
-      stop = 931;
-      return;
-    case 1614:
-      start = 931;
-      stop = 1244;
-      return;
-    case 1804:
-      start = 1244;
-      stop = 1746;
-      return;
+    for(int i = 0; i < nsteps; i++){
+      if(spos == i*(sposMax-sposMin)/(nsteps-1)+xpos){
+        start = values[i];
+        stop = values[i+1];
+        return;
+      }
     }
   }
   
