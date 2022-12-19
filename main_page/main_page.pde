@@ -15,7 +15,7 @@ PImage mapa;
 
 PImage ufo;
 
-boolean start = true;
+int start = 1;
 //Game game;
 Points map;
 
@@ -26,7 +26,7 @@ void setup() {
   //fullScreen();
   bg = loadImage("data/background.jpg");
   //bg.resize(width,height);
-  image(bg,0,0,width,height);
+ 
   //ufo1 = new SoundFile(this, "data/landing.mp3");
   //ufo1.play();
   //frameRate(1);
@@ -38,25 +38,17 @@ void setup() {
   game2 = new Button(screenWidth/2 + 120, screenHeight/2 + 200 , 80, 50, "Exit", 235, 142, 242);
   //game = new Game();
   map = new Points(0);
-  //us = loadImage("data/mapa1.PNG");
-  //data = loadTable("data/ufo.csv");
+
   ufo =loadImage("data/ufo.png");
-  //more_data = loadTable("data/ufo_more.csv");
-  //println(data.getRowCount(), data.getColumnCount());
-  frameRate(10);
-   //String url = "https://d31xsmoz1lk3y3.cloudfront.net/games/images/1446677138_Find_the_US_States";
-   //mapa = loadImage(url);
-
   map.getData();
-
-    
-
 }
 
-boolean klikniety = false;
+//boolean klikniety = false;
 void draw() {
+    print(start);
 
-  if(start) {
+  if(start == 1) {
+    image(bg,0,0,width,height);
     image(ship, shipX, shipY);
     game1.update();
     game1.render();
@@ -66,22 +58,25 @@ void draw() {
     game2.render();
   }
 
-
-  
-  
   if(launch.isClicked())
   {
-        
+    start = 2;  
   }
-  
 
-  
   if(game1.isClicked())
   {
+    start = 1;
+  }
+  
+    if (start == 2 ) {
+        map.display(0);
+      game1.update();
+    game1.render();
+    launch.update();
+    launch.render();
+    game2.update();
+    game2.render();
 
-
-    start = false;
-    map.display();
     //game.setup();
     //game.drawPoints();
 

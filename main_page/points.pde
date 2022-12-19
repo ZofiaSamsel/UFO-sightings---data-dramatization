@@ -34,9 +34,9 @@ class Points {
 // ============================================================================================= 
 //  displays point accordigly to its shape
 // =============================================================================================  
-  void display(){
+  void display(int i){
     noStroke();
-    println(i);
+    //println(i);
     if (i == 0) {
          background(60);
          image(us, 0, 0, us.width*1.5, us.height*1.5);
