@@ -50,48 +50,34 @@ void draw() {
   if(start == 1) {
     image(bg,0,0,width,height);
     image(ship, shipX, shipY);
+  }
+
+  if(launch.isClicked()) {
+    start = 2;  
+  }
+
+  if(game1.isClicked()){
+    start = 1;
+  }
+  
+  if (start == 2 ) {
+    map.display(0);
+   }
+
+  if(game2.isClicked())
+  {
+    exit(); 
+  }
+  
+  /*------------------------------------------------------------------
+  creating buttons
+  ------------------------------------------------------------*/
     game1.update();
     game1.render();
     launch.update();
     launch.render();
     game2.update();
     game2.render();
-  }
-
-  if(launch.isClicked())
-  {
-    start = 2;  
-  }
-
-  if(game1.isClicked())
-  {
-    start = 1;
-  }
-  
-    if (start == 2 ) {
-        map.display(0);
-      game1.update();
-    game1.render();
-    launch.update();
-    launch.render();
-    game2.update();
-    game2.render();
-
-    //game.setup();
-    //game.drawPoints();
-
-  }
-
-
-    
-  
-  
-  if(game2.isClicked())
-  {
-    exit();
-    
-  }
-  
 
   
   
