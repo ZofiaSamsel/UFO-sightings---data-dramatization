@@ -1,3 +1,4 @@
+/*
 class Game {
   int i = 0;
   //int Height = 900;
@@ -72,3 +73,4 @@ void triangle1(int x, int y, int h)
 }
     
 }
+*/

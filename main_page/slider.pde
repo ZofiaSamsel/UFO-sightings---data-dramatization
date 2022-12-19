@@ -6,7 +6,7 @@ Slider parameters:
   height of slidebar
   number of possible positions (ns = 10 in case of year by year in a decade)  
 */
-
+/*
 class Slider {
   int swidth, sheight;    // width and height of bar
   float xpos, ypos;       // x and y position of bar
@@ -142,3 +142,4 @@ class Slider {
     }
   }
 }
+*/

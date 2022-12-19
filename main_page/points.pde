@@ -9,6 +9,8 @@ class Points {
   float x, y;
   String shape, date, time, duration, comment;
   Table data;
+  PImage us; 
+  
 
   Points (int id) {
     i = id;
@@ -18,8 +20,11 @@ class Points {
    // println("check");
     data = loadTable("data/ufo.csv");
     shape = data.getString(i, 2);
-     y = map(data.getFloat(i, 5), 27.994402, 47.751076, height, 0);
-     x = map(data.getFloat(i, 6), -120.500000, -68.972168, 0, width);
+    us = loadImage("data/mapa1.PNG");
+    y = map(data.getFloat(i, 5), 27.994402, 47.751076, us.height*1.15, 0);
+    x = map(data.getFloat(i, 6), -120.500000, -68.972168, 0, us.width*1.30);
+     //y = map(data.getFloat(i, 5), 27.994402, 47.751076, height, 0);
+     //x = map(data.getFloat(i, 6), -120.500000, -68.972168, 0, width);
      date = data.getString(i, 7);
      time = data.getString(i, 8);
      duration = data.getString(i, 3);
@@ -31,19 +36,28 @@ class Points {
 // =============================================================================================  
   void display(){
     noStroke();
-    switch(shape){
-      case "triangle":
-        fill(255, 0, 0);
-        triangle(x, y,x-5, y+10, x+5, y+10);
-        return;
-      case "disk":
-        fill(0, 255, 0);
-        ellipse(x, y, 15, 5);
-        return;
-      case "circle":
-        fill(0, 0, 255);
-        ellipse(x, y, 10, 10);
-        return;
+    println(i);
+    if (i == 0) {
+         background(60);
+         image(us, 0, 0, us.width*1.5, us.height*1.5);
+         i ++;
+    }
+    else {
+      switch(shape){
+        case "triangle":
+          fill(255, 0, 0);
+          triangle(x, y,x-5, y+10, x+5, y+10);
+          return;
+        case "disk":
+          fill(0, 255, 0);
+          ellipse(x, y, 15, 5);
+          return;
+        case "circle":
+          fill(0, 0, 255);
+          ellipse(x, y, 10, 10);
+          return;
+      }
+      i++;
     }
   }
   
