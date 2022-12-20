@@ -37,7 +37,7 @@ class Button {
     fill(Colour);
     rect(Pos.x, Pos.y, Width, Height, 28);
     
-    textSize(10);
+    textSize(25);
     fill(0);
     textAlign(CENTER, CENTER);
     text(Text, Pos.x + (Width/2), Pos.y + (Height/2));
