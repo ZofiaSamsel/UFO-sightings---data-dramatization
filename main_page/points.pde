@@ -9,7 +9,7 @@ class Points {
   float x, y;
   String shape, date, time, duration, comment;
   Table data;
-  PImage us; 
+  //PImage us; 
   
 
   Points (int id) {
@@ -20,7 +20,7 @@ class Points {
    // println("check");
     data = loadTable("data/ufo.csv");
     shape = data.getString(i, 2);
-    us = loadImage("data/mapa1.PNG");
+    //us = loadImage("data/mapa1.PNG");
     y = map(data.getFloat(i, 5), 27.994402, 47.751076, us.height*1.15, 0);
     x = map(data.getFloat(i, 6), -120.500000, -68.972168, 0, us.width*1.30);
      //y = map(data.getFloat(i, 5), 27.994402, 47.751076, height, 0);
@@ -34,15 +34,15 @@ class Points {
 // ============================================================================================= 
 //  displays point accordigly to its shape
 // =============================================================================================  
-  void display(int i){
+  void display(){
     noStroke();
-    //println(i);
-    if (i == 0) {
-         background(60);
-         image(us, 0, 0, us.width*1.5, us.height*1.5);
-         i ++;
-    }
-    else {
+    ////println(i);
+    //if (i == 0) {
+    //     background(60);
+    //     image(us, 0, 0, us.width*1.5, us.height*1.5);
+    //     i ++;
+    //}
+    //else {
       switch(shape){
         case "triangle":
           fill(255, 0, 0);
@@ -57,8 +57,8 @@ class Points {
           ellipse(x, y, 10, 10);
           return;
       }
-      i++;
-    }
+    //  i++;
+    //}
   }
   
   void update(){
@@ -81,6 +81,7 @@ class Points {
 //  if mouse over point and pressed displays a box with info about sighting
 // =============================================================================================  
   void showInfo(){
+    textAlign(LEFT);
     if(overEvent() && mousePressed){
       fill(100);
       stroke(0);

@@ -6,7 +6,7 @@ Slider parameters:
   height of slidebar
   number of possible positions (ns = 10 in case of year by year in a decade)  
 */
-/*
+
 class Slider {
   int swidth, sheight;    // width and height of bar
   float xpos, ypos;       // x and y position of bar
@@ -132,14 +132,15 @@ class Slider {
 //=============================================================================================
   void displayYear(){
     fill(0);
+    textAlign(LEFT);
     textFont(font);
     textSize(40);
     for(int i = 0; i < nsteps; i++){
       if(spos == i*(sposMax-sposMin)/(nsteps-1)+xpos){
+        textAlign(LEFT);
         text("199"+str(i), xpos-103, ypos+sheight/1.5);
         return;
       }
     }
   }
 }
-*/
