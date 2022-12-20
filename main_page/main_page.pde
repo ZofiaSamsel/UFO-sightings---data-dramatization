@@ -13,9 +13,11 @@ void setup() {
   
   bg = loadImage("data/background.jpg");
   //bg.resize(width,height);
- 
+  frame = loadImage("data/frame.png");
+  frame.resize(width, height);
+  
   ship = loadImage("data/ship.png");
-  ship.resize(200, 120);
+  ship.resize(400,240);
   
  
   ufo =loadImage("data/ufo.png");
@@ -27,13 +29,14 @@ void setup() {
 // ============================================================================================= 
 //  initialisation of objects
 // =============================================================================================  
-  //ufo1 = new SoundFile(this, "data/landing.mp3");
+  //ufo1 = new SoundFile(this, "data/landing1.wav");
   //ufo1.play();
-  launch = new Button(screenWidth/2 - 40, screenHeight/2 + 200 , 80, 50, "Launch", 235, 142, 242);
-  game1 = new Button(screenWidth/2 - 200, screenHeight/2 + 200 , 80, 50, "Game 1", 235, 142, 242);
-  game2 = new Button(screenWidth/2 + 120, screenHeight/2 + 200 , 80, 50, "Exit", 235, 142, 242);
+  launch = new Button(250, height/2+ 400, 100, 70, "Launch", 229, 79, 220);
+  game1 = new Button(370, height/2 + 400 , 100, 70, "Game 1", 51, 203, 240);
+  game2 = new Button(490, height/2 + 400 , 100, 70, "Game 2", 189, 51, 240);
   //game = new Game();
   //map = new Points(0);
+  ship1 = new Ship(ship, shipX, shipY, 400, 240);
   slider = new Slider(200, 50, width-400, 40, 10);
   
   pts = new Points[data.getRowCount()];
@@ -119,7 +122,15 @@ void mapScreen(){
 
 void startScreen(){
   image(bg,0,0,width,height);
+  image(frame, 0, 0);
+  
+  if(ship1.isClicked()){
+    shipX = mouseX;
+    shipY = mouseY;
+  }
   image(ship, shipX, shipY);
+  ship1.update();
+  ship1.render();
 }
 
 void animationScreen(){

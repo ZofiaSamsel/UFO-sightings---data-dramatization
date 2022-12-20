@@ -2,7 +2,7 @@ import processing.sound.*;
 
 SoundFile ufo1;
 
-PImage bg;
+PImage bg, frame;
 PImage ship;
 PImage mapa;
 PImage ufo;
@@ -32,5 +32,6 @@ Button game2;
 //Game game;
 //Points map;
 Slider slider;
+Ship ship1;
 
 Points[] pts;
