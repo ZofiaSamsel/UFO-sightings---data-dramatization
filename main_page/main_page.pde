@@ -29,8 +29,9 @@ void setup() {
 // ============================================================================================= 
 //  initialisation of objects
 // =============================================================================================  
-  //ufo1 = new SoundFile(this, "data/landing1.wav");
-  //ufo1.play();
+  ufo1 = new SoundFile(this, "data/landing1.wav");
+  ufo1.play();
+  ufo1.loop();
   launch = new Button(250, height/2+ 400, 100, 70, "Launch", 229, 79, 220);
   game1 = new Button(370, height/2 + 400 , 100, 70, "Game 1", 51, 203, 240);
   game2 = new Button(490, height/2 + 400 , 100, 70, "Game 2", 189, 51, 240);
