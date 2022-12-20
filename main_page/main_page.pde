@@ -51,6 +51,17 @@ void setup() {
   }
 }
 
+void mouseClicked() {
+  if(mouseX >= shipX && mouseX <= shipX+400 && mouseY >= shipY && mouseY <= shipY+240 && click == false)
+  {
+    click = true;
+  } else {click = false;}
+  if (shipX == mouseX && shipY == mouseY && click == true)
+  {
+    click = false;
+  }
+}
+
 void draw() {
   //println(start);
 
@@ -123,8 +134,12 @@ void mapScreen(){
 void startScreen(){
   image(bg,0,0,width,height);
   image(frame, 0, 0);
+  if(click == true)
+    {shipX = mouseX;
+    shipY = mouseY;
+    }
   
-  if(ship1.isClicked()){
+  //if(ship1.isClicked()){
     shipX = mouseX;
     shipY = mouseY;
   }
