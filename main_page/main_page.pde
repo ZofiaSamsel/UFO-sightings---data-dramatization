@@ -33,8 +33,8 @@ void setup() {
   ufo1.play();
   ufo1.loop();
   launch = new Button(250, height/2+ 400, 100, 70, "Launch", 229, 79, 220);
-  game1 = new Button(370, height/2 + 400 , 100, 70, "Game 1", 51, 203, 240);
-  game2 = new Button(490, height/2 + 400 , 100, 70, "Game 2", 189, 51, 240);
+  game1 = new Button(370, height/2 + 400 , 100, 70, "Game 1", 229, 79, 220);
+  game2 = new Button(490, height/2 + 400 , 100, 70, "Game 2", 229, 79, 220);
   //game = new Game();
   //map = new Points(0);
   ship1 = new Ship(ship, shipX, shipY, 400, 240);
