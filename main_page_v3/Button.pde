@@ -1,13 +1,26 @@
+/* 
+Button parameters:
+  vector position
+  width of button
+  height of button
+  color of button
+  text displayed 
+*/
+
 class Button {
   PVector Pos = new PVector(0,0);
   float Width = 0;
   float Height = 0;
   color Colour;
   String Text;
-  Boolean Pressed = false;
-  Boolean Clicked = false;
-  //Constructor to create a button
-  Button(int x, int y, int w, int h, String t, int r, int g, int b)
+  Boolean Pressed = false;          //is the mouse pressed
+  Boolean Clicked = false;          //is the button clicked
+ 
+// ============================================================================================= 
+// constructor to create a button
+// =============================================================================================    
+   
+   Button(int x, int y, int w, int h, String t, int r, int g, int b)       
   {
     Pos.x = x;
     Pos.y = y;
@@ -16,7 +29,8 @@ class Button {
     Colour = color(r, g, b);
     Text = t;
   }
-  void update()//must be placed in void draw() to work
+// updates infromation about the button being clicked  
+  void update()
   {
      if(mousePressed == true && mouseButton == LEFT && Pressed == false)
      {
@@ -31,8 +45,9 @@ class Button {
      Pressed = false;
    }
   }
-  
-  void render() //must be placed in void draw() function to render the button to the screen
+
+// renders the button to the screen
+  void render() 
   {
     fill(Colour);
     stroke(#0450ff);
@@ -46,6 +61,8 @@ class Button {
     textFont(font);
     text(Text, Pos.x + (Width/2), Pos.y +(Height/2)- 5);
   }
+
+// enables to check if the button has been clicked
   boolean isClicked() //Use this in a if statement to check if the button has been clicked
   {
     return Clicked;
