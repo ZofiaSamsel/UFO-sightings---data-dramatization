@@ -23,6 +23,7 @@ float x, y;
 
 //boolean klikniety = false;
 boolean firstMousePress = false;
+boolean click = false;
 
 int[] values = {1, 59, 137, 201, 279, 398, 526, 658, 931, 1244, 1746, 0};
 
