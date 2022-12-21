@@ -24,15 +24,15 @@ class Points {
   void getData(){
     data = loadTable("data/ufo.csv");
     shape = data.getString(i, 2);
-   
-    y = map(data.getFloat(i, 5), 27.994402, 47.751076, us.height*1.15+height/30, height/30);            //maps raw latitude coordinates onto the map size
-    x = map(data.getFloat(i, 6), -120.500000, -68.972168, width/25, us.width*1.3+width/25);             //maps raw longitude coordinates onto the map size
-     
     date = data.getString(i, 7);
     time = data.getString(i, 8);
     duration = data.getString(i, 3);
     comment = data.getString(i, 4);
     date_time = data.getString(i, 1);
+ 
+ //maps raw coordinates onto the map size
+    y = map(data.getFloat(i, 5), 27.994402, 47.751076, us.height*1.15+height/30, height/30);            
+    x = map(data.getFloat(i, 6), -120.500000, -68.972168, width/25, us.width*1.3+width/25);             
   }
   
 // ============================================================================================= 
@@ -56,8 +56,9 @@ class Points {
           return;
       }
   }
-  
-   void displayUfo() {                                                                                                    //displays points as ufo image
+
+//displays points as ufo image
+   void displayUfo() {                                                                                                    
     noStroke();
     image(ufo, x+us.width/8, y+us.height/12, 50,50);
     return;
@@ -70,8 +71,9 @@ class Points {
       over = false;
     }
   }
-  
-  boolean overEvent() {                                                                                                   //checks whether the mouse is over point
+
+//checks whether the mouse is over point
+  boolean overEvet() {                                                                                                   
     if (mouseX > x+us.width/8-5 && mouseX < x+us.width/8+5 && mouseY > y+us.height/12-5 && mouseY < y+us.height/12+5){
       return true;
     } else {
