@@ -2,10 +2,11 @@
 //  setup
 // =============================================================================================  
 void setup() {
+  
 // screen setup
-  //size(1600,900);
   fullScreen();
-
+  //size(1600,900);
+  
 // loads
   data = loadTable("data/ufo.csv");
   
@@ -36,7 +37,7 @@ void setup() {
   
   pts = new Points[data.getRowCount()];
 
-  // read data from ufo.csv file
+// read data from ufo.csv file
   for(int i = 1; i < data.getRowCount(); i++) {
     pts[i] = new Points(i);
     pts[i].getData();
@@ -49,7 +50,8 @@ void setup() {
 void draw() {
   screenMode(); 
   buttons();
-   
+
+// activates the screen corresponding to button
   if(start == 1) { 
     startScreen();
   }
@@ -72,7 +74,7 @@ void mouseClicked() {
   if(mouseX >= shipX && mouseX <= shipX+400 && mouseY >= shipY && mouseY <= shipY+240 && click == false)
   {
     click = true;
-    ufo2.play();
+    ufo2.play();                    
   } else {click = false;}
   if (shipX == mouseX && shipY == mouseY && click == true)
   {
