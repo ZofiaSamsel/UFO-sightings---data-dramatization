@@ -8,17 +8,20 @@ Slider parameters:
 */
 
 class Slider {
-  float swidth, sheight;    // width and height of bar
-  float xpos, ypos;       // x and y position of bar
-  float spos, newspos;    // x position of slider
-  final float sposMin, sposMax; // max and min values of slider
-  int nsteps;             // number of steps
+  float swidth, sheight;                   // width and height of bar
+  float xpos, ypos;                       // x and y position of bar
+  float spos, newspos;                    // x position of slider
+  final float sposMin, sposMax;           // max and min values of slider
+  int nsteps;                             // number of steps
   
-  float step;               // which step
-  boolean over;           // is the mouse over the slider?
+  float step;                             // which step
+  boolean over;                           // is the mouse over the slider
   boolean locked;
 
-  Slider (float xp, float yp, float sw, float sh, int ns) {
+// ============================================================================================= 
+// Constructor to create a slider
+// ============================================================================================= 
+  Slider (float xp, float yp, float sw, float sh, int ns) {         
     xpos = xp;
     ypos = yp-sheight/2;
     swidth = sw;
@@ -89,21 +92,12 @@ class Slider {
 //  displays slider
 // =============================================================================================
   void display() {
-// slider bar
-    noStroke();
+
+    noStroke();                                            // slider bar   
     fill(#0450ff);
     rect(xpos, ypos, swidth, sheight);
-    
-// step lines    
-    //fill(0);
-    //rect(xpos, ypos+sheight, 2, sheight);
-    //for(int i = 1; i < nsteps; i++){
-    //  fill(0);
-    //  rect(i*(sposMax-sposMin)/nsteps+xpos, ypos+sheight, 2, sheight);
-    //}
-
-// slider    
-    if (over || locked) {
+   
+    if (over || locked) {                                  // slider 
       fill(#D120C8);
     } else {
       fill(229, 79, 220);
@@ -116,7 +110,7 @@ class Slider {
 //============================================================================================= 
 //  changes start and stop variables accordingly to slider position
 //=============================================================================================
-// 1, 59, 137, 201, 279, 398, 526, 658, 931, 1244, 1746
+
   void getPos() {
     for(int i = 0; i < nsteps; i++){
       if(spos == i*(sposMax-sposMin)/(nsteps-1)+xpos){
@@ -149,7 +143,7 @@ class Slider {
     }
   }
   
-    void displayYearAnim(){
+    void displayYearAnim(){                       //displays years during animation
       noStroke();
       fill(#0450ff);
       rect(xpos, ypos, swidth, sheight);
