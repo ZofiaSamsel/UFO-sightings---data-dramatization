@@ -32,9 +32,9 @@ void setup() {
   ufo1 = new SoundFile(this, "data/landing1.wav");
   ufo1.play();
   ufo1.loop();
-  launch = new Button(250, height*5/6, 100, 70, "Launch", 229, 79, 220);
-  game1 = new Button(370, height*5/6 , 100, 70, "Game 1", 229, 79, 220);
-  game2 = new Button(490, height*5/6 , 100, 70, "Game 2", 229, 79, 220);
+  launch = new Button(width/8, height*5/6, 100, 70, "Launch", 229, 79, 220);
+  game1 = new Button(width/8+120, height*5/6 , 100, 70, "Game 1", 229, 79, 220);
+  game2 = new Button(width/8+240, height*5/6 , 100, 70, "Game 2", 229, 79, 220);
   //game = new Game();
   //map = new Points(0);
   ship1 = new Ship(ship, shipX, shipY, 400, 240);
