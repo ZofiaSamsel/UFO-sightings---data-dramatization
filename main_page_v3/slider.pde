@@ -8,20 +8,20 @@ Slider parameters:
 */
 
 class Slider {
-  float swidth, sheight;                   // width and height of bar
-  float xpos, ypos;                       // x and y position of bar
-  float spos, newspos;                    // x position of slider
-  final float sposMin, sposMax;           // max and min values of slider
-  int nsteps;                             // number of steps
+  float swidth, sheight;    // width and height of bar
+  float xpos, ypos;         // x and y position of bar
+  float spos, newspos;      // x position of slider
+  float sposMin, sposMax;   // max and min values of slider
+  int nsteps;               // number of steps
   
-  float step;                             // which step
-  boolean over;                           // is the mouse over the slider
+  float step;               // which step
+  boolean over;             // is the mouse over the slider?
   boolean locked;
 
 // ============================================================================================= 
 // Constructor to create a slider
-// ============================================================================================= 
-  Slider (float xp, float yp, float sw, float sh, int ns) {         
+// =============================================================================================
+  Slider (float xp, float yp, float sw, float sh, int ns) {
     xpos = xp;
     ypos = yp-sheight/2;
     swidth = sw;
@@ -35,9 +35,8 @@ class Slider {
     sposMax = xpos + swidth - sheight;
   }
 
-// ============================================================================================= 
-//  updates slider position, over event, lock event (is the mouse clicked)
-// =============================================================================================
+
+// updates slider position, over event, lock event (is the mouse clicked)
   void update() {
     if (overEvent()) {
       over = true;
@@ -59,9 +58,7 @@ class Slider {
   }
   
  
-// ============================================================================================= 
-//  returns step over which the slider should be displayed
-// =============================================================================================
+// returns step over which the slider should be displayed
   float step(){
     float temp = (sposMax-sposMin)/(nsteps-1);
     //print(temp);
@@ -75,9 +72,8 @@ class Slider {
     return step;
   }
   
-// ============================================================================================= 
-//  returns if mouse is over slidebar 
-// =============================================================================================
+
+// returns if mouse is over slidebar 
   boolean overEvent() {
     if (mouseX > xpos && mouseX < xpos+swidth &&
       mouseY > ypos && mouseY < ypos+sheight) {
@@ -87,32 +83,25 @@ class Slider {
     }
   }
 
-
-// ============================================================================================= 
-//  displays slider
-// =============================================================================================
+ 
+// displays slider
   void display() {
-    
-    // slider bar   
-    noStroke();                                            
+    // slider bar
+    noStroke();
     fill(#0450ff);
     rect(xpos, ypos, swidth, sheight);
-    
-    // slider 
-    if (over || locked) {                                 
+
+    // slider    
+    if (over || locked) {
       fill(#D120C8);
     } else {
       fill(229, 79, 220);
     }
-    
     rect(spos, ypos, swidth/nsteps, sheight);
  }
 
 
-//============================================================================================= 
 //  changes start and stop variables accordingly to slider position
-//=============================================================================================
-
   void getPos() {
     for(int i = 0; i < nsteps; i++){
       if(spos == i*(sposMax-sposMin)/(nsteps-1)+xpos){
@@ -123,9 +112,8 @@ class Slider {
     }
   }
   
-//============================================================================================= 
-//  displays year of the ufo sightings
-//=============================================================================================
+
+// displays year of the ufo sightings
   void displayYear(){
     textFont(font);
     for(int i = 0; i < nsteps; i++){
@@ -145,20 +133,20 @@ class Slider {
     }
   }
 
-//displays years during animation
-    void displayYearAnim(){                       
-      noStroke();
-      fill(#0450ff);
-      rect(xpos, ypos, swidth, sheight);
-        
-      fill(#0450ff);
-      rect(width/25+us.width*1.5, height/30+us.height*1.5-140, 173,173, 12, 24, 48, 0);
-      fill(0);
-      textAlign(LEFT);
-      textSize(23);
-      text("DATA FROM", width/25+us.width*1.5+10, height/30+us.height*1.5-100);
-      text("   YEARS", width/25+us.width*1.5+10, height/30+us.height*1.5-50);
-      textSize(30);
-      text("'90 - '99", width/25+us.width*1.5+10, height/30+us.height*1.5);
-    }
+// displays years during animation
+  void displayYearAnim(){
+    noStroke();
+    fill(#0450ff);
+    rect(xpos, ypos, swidth, sheight);
+      
+    fill(#0450ff);
+    rect(width/25+us.width*1.5, height/30+us.height*1.5-140, 173,173, 12, 24, 48, 0);
+    fill(0);
+    textAlign(LEFT);
+    textSize(23);
+    text("DATA FROM", width/25+us.width*1.5+10, height/30+us.height*1.5-100);
+    text("   YEARS", width/25+us.width*1.5+10, height/30+us.height*1.5-50);
+    textSize(30);
+    text("'90 - '99", width/25+us.width*1.5+10, height/30+us.height*1.5);
+  }
 }

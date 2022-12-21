@@ -2,40 +2,38 @@
 //  setup
 // =============================================================================================  
 void setup() {
-  
-// screen setup
+  // screen setup
   fullScreen();
-  //size(1600,900);
-  
-// loads
+  frameRate(48);
+
+
+  // loads
   data = loadTable("data/ufo.csv");
-  
   bg = loadImage("data/background.jpg");
-  ufo =loadImage("data/ufo.png");
-  us = loadImage("data/mapa1.png");
+  sky = loadImage("data/sky.jpg");
   frame = loadImage("data/frame.png");
   frame.resize(width, height);
-  
   ship = loadImage("data/ship.png");
   ship.resize(400,240);
- 
+  ufo =loadImage("data/ufo.png");
+  us = loadImage("data/mapa1.png");
+
   font = createFont("data/INVASION2000.TTF", 20);
   textFont(font);
+
 
 // initialisation of objects 
   ufo1 = new SoundFile(this, "data/landing1.wav");
   ufo2 = new SoundFile(this, "data/ufo_landing.wav");
-  
   game1 = new Button(width/8, height*5/6, 100, 70, "Home", 229, 79, 220);
   launch = new Button(width/8+120, height*5/6 , 100, 70, "Years", 229, 79, 220);
   animation = new Button(width/8+240, height*5/6 , 100, 70, "Play", 229, 79, 220);
   game2 = new Button(width/8+360, height*5/6 , 100, 70, "Exit", 229, 79, 220);
-  
   ship1 = new Ship(ship, shipX, shipY, 400, 240);
-  
   slider = new Slider(width/25, height/30+us.height*1.5+3, us.width*1.5+3, 30, 10);
   
   pts = new Points[data.getRowCount()];
+
 
 // read data from ufo.csv file
   for(int i = 1; i < data.getRowCount(); i++) {
@@ -44,14 +42,15 @@ void setup() {
   }
 }
 
+
 // ============================================================================================= 
 //  draw() loop
 // ============================================================================================= 
 void draw() {
-  screenMode(); 
-  buttons();
+  screenMode();
+ 
 
-// activates the screen corresponding to button
+  // activates the screen corresponding to button
   if(start == 1) { 
     startScreen();
   }
@@ -62,6 +61,8 @@ void draw() {
     animationScreen();
   }
   
+   buttons();
+    
    if (firstMousePress) {
     firstMousePress = false;
   }
@@ -74,7 +75,7 @@ void mouseClicked() {
   if(mouseX >= shipX && mouseX <= shipX+400 && mouseY >= shipY && mouseY <= shipY+240 && click == false)
   {
     click = true;
-    ufo2.play();                    
+    ufo2.play();
   } else {click = false;}
   if (shipX == mouseX && shipY == mouseY && click == true)
   {
@@ -89,6 +90,7 @@ void mousePressed() {
   if (!firstMousePress) {
     firstMousePress = true;
   }
+  
   ufo2.stop();
 }
 
@@ -131,7 +133,10 @@ void buttons(){
 //  displaying screen with map, slider, description
 // ============================================================================================= 
 void mapScreen(){
-    ufo1.stop();
+  if(ufo1.isPlaying()){
+      ufo1.stop();
+  }
+  
     slider.getPos();
     
     image(bg,0,0,width,height);
@@ -155,18 +160,19 @@ void mapScreen(){
 //  displaying home page with buttons and spaceship
 // ============================================================================================= 
 void startScreen(){
+  if(ufo1.isPlaying()){
+      ufo1.stop();
+  }
   image(bg,0,0,width,height);
   image(frame, 0, 0);
+  if(click == true){
+    shipX = mouseX;
+    shipY = mouseY;
+   }
   
   image(ship, shipX, shipY);
   ship1.update();
   ship1.render();
-  
-    if(click == true){
-    shipX = mouseX;
-    shipY = mouseY;
-   }
-  ufo1.stop();
 }
 
 
@@ -175,13 +181,14 @@ void startScreen(){
 // ============================================================================================= 
 void animationScreen(){
   if(counter==1){
-    image(bg,0,0,width,height);
-    fill(#0450ff);
-    rect(width/25-3, height/30-3, us.width*1.5+6, us.height*1.5+6);
-    image(us, width/25, height/30, us.width*1.5, us.height*1.5);
-    slider.displayYearAnim();
+    image(sky,0,0,width,height);
+    fill(#5be1e2);
+    textSize(60);
+    text("UFO SIGHTINGS", 3*width/4, height/10);
+    text("'90 - '99", 3*width/4, height/10+80);
     image(frame, 0, 0, width, height);
     ufo1.play();
+    ufo1.loop();
   }
   pts[counter].update();
   pts[counter].displayUfo();

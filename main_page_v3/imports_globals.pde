@@ -11,7 +11,8 @@ PImage bg, frame;
 PImage ship;
 PImage mapa;
 PImage ufo;
-PImage us; 
+PImage us;
+PImage sky;
 
 PFont font;
 

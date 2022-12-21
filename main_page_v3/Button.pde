@@ -6,7 +6,6 @@ Button parameters:
   color of button
   text displayed 
 */
-
 class Button {
   PVector Pos = new PVector(0,0);
   float Width = 0;
@@ -15,12 +14,11 @@ class Button {
   String Text;
   Boolean Pressed = false;          //is the mouse pressed
   Boolean Clicked = false;          //is the button clicked
- 
+
 // ============================================================================================= 
 // constructor to create a button
-// =============================================================================================    
-   
-   Button(int x, int y, int w, int h, String t, int r, int g, int b)       
+// =============================================================================================  
+  Button(int x, int y, int w, int h, String t, int r, int g, int b)
   {
     Pos.x = x;
     Pos.y = y;
@@ -29,7 +27,8 @@ class Button {
     Colour = color(r, g, b);
     Text = t;
   }
-// updates infromation about the button being clicked  
+  
+// updates infromation about the button being clicked
   void update()
   {
      if(mousePressed == true && mouseButton == LEFT && Pressed == false)
@@ -46,8 +45,9 @@ class Button {
    }
   }
 
+  
 // renders the button to the screen
-  void render() 
+  void render()
   {
     fill(Colour);
     stroke(#0450ff);
@@ -63,7 +63,8 @@ class Button {
   }
 
 // enables to check if the button has been clicked
-  boolean isClicked() //Use this in a if statement to check if the button has been clicked
+// use this in a if statement to check if the button has been clicked
+  boolean isClicked()
   {
     return Clicked;
   }

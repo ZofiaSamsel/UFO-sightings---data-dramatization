@@ -3,8 +3,7 @@ Ship parameters:
   position vector
   width
   height
-*/  
-
+*/ 
 class Ship {
 
   PVector Pos = new PVector(0,0);
@@ -13,7 +12,7 @@ class Ship {
   PImage ship;
   Boolean Pressed = false;
   Boolean Clicked = false;
-  
+
 // ============================================================================================= 
 // Constructor to create a ship
 // ============================================================================================= 
@@ -24,7 +23,9 @@ class Ship {
     Pos.y = y;
     Width = w;
     Height = h;
+    
   }
+  
 // updates infromation about the ship being clicked
   void update()
   {
@@ -41,15 +42,16 @@ class Ship {
      Pressed = false;
    }
   }
-
+  
 // renders the ship to the screen
-  void render() 
+  void render()
   {
     image(ship, shipX, shipY);
   }
   
-//enables to check if the ship has been clicked
-  boolean isClicked() 
+// enables to check if the ship has been clicked
+// use this in a if statement to check if the button has been clicked
+  boolean isClicked()
   {
     return Clicked;
   }
