@@ -60,6 +60,11 @@ class Points {
     //  i++;
     //}
   }
+  void displayUfo() {
+    noStroke();
+    image(ufo, x+130, y + 60, 50,50);
+    return;
+  }
   
   void update(){
     if (overEvent()) {
