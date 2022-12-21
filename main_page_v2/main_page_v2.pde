@@ -136,7 +136,7 @@ void animationScreen(){
     image(us, 0, 0, us.width*1.5, us.height*1.5);
   }
   pts[counter].update();
-  pts[counter].display();
+  pts[counter].displayUfo();
   counter++;
   if(counter==data.getRowCount()){
     counter=1;
