@@ -35,15 +35,12 @@ class Button {
   void render() //must be placed in void draw() function to render the button to the screen
   {
     fill(Colour);
-    stroke(147, 143, 162);
-    strokeWeight(5);
-    rect(Pos.x, Pos.y, Width, Height, 3);
+    rect(Pos.x, Pos.y, Width, Height, 28);
     
+    textSize(25);
     fill(0);
     textAlign(CENTER, CENTER);
-    textSize(20);
-    textFont(font);
-    text(Text, Pos.x + (Width/2), Pos.y +(Height/2)- 5);
+    text(Text, Pos.x + (Width/2), Pos.y + (Height/2));
   }
   boolean isClicked() //Use this in a if statement to check if the button has been clicked
   {
