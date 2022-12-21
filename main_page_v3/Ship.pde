@@ -1,3 +1,10 @@
+/*
+Ship parameters:
+  position vector
+  width
+  height
+*/  
+
 class Ship {
 
   PVector Pos = new PVector(0,0);
@@ -6,7 +13,10 @@ class Ship {
   PImage ship;
   Boolean Pressed = false;
   Boolean Clicked = false;
-  //Constructor to create a button
+  
+// ============================================================================================= 
+// Constructor to create a ship
+// ============================================================================================= 
   Ship(PImage img, float x, float y, int w, int h)
   {
     ship = img;
@@ -14,9 +24,9 @@ class Ship {
     Pos.y = y;
     Width = w;
     Height = h;
-    
   }
-  void update()//must be placed in void draw() to work
+// updates infromation about the ship being clicked
+  void update()
   {
      if(mousePressed == true && mouseButton == LEFT && Pressed == false)
      {
@@ -31,12 +41,15 @@ class Ship {
      Pressed = false;
    }
   }
-  
-  void render() //must be placed in void draw() function to render the button to the screen
+
+// renders the ship to the screen
+  void render() 
   {
     image(ship, shipX, shipY);
   }
-  boolean isClicked() //Use this in a if statement to check if the button has been clicked
+  
+//enables to check if the ship has been clicked
+  boolean isClicked() 
   {
     return Clicked;
   }
