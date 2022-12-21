@@ -9,27 +9,30 @@ class Points {
   float x, y;
   String shape, date, time, duration, comment, date_time;
   Table data;
-  //PImage us; 
-  
+ 
+// ============================================================================================= 
+//  constructor to create points
+// =============================================================================================    
 
   Points (int id) {
     i = id;
   }
   
+// ============================================================================================= 
+//  retrieves all the necessary data
+// =============================================================================================  
   void getData(){
-   // println("check");
     data = loadTable("data/ufo.csv");
     shape = data.getString(i, 2);
-    //us = loadImage("data/mapa1.PNG");
-    y = map(data.getFloat(i, 5), 27.994402, 47.751076, us.height*1.15+height/30, height/30);
-    x = map(data.getFloat(i, 6), -120.500000, -68.972168, width/25, us.width*1.3+width/25);
-     //y = map(data.getFloat(i, 5), 27.994402, 47.751076, height, 0);
-     //x = map(data.getFloat(i, 6), -120.500000, -68.972168, 0, width);
-     date = data.getString(i, 7);
-     time = data.getString(i, 8);
-     duration = data.getString(i, 3);
-     comment = data.getString(i, 4);
-     date_time = data.getString(i, 1);
+   
+    y = map(data.getFloat(i, 5), 27.994402, 47.751076, us.height*1.15+height/30, height/30);            //maps raw latitude coordinates onto the map size
+    x = map(data.getFloat(i, 6), -120.500000, -68.972168, width/25, us.width*1.3+width/25);             //maps raw longitude coordinates onto the map size
+     
+    date = data.getString(i, 7);
+    time = data.getString(i, 8);
+    duration = data.getString(i, 3);
+    comment = data.getString(i, 4);
+    date_time = data.getString(i, 1);
   }
   
 // ============================================================================================= 
@@ -37,13 +40,7 @@ class Points {
 // =============================================================================================  
   void display(){
     noStroke();
-    ////println(i);
-    //if (i == 0) {
-    //     background(60);
-    //     image(us, 0, 0, us.width*1.5, us.height*1.5);
-    //     i ++;
-    //}
-    //else {
+    
       switch(shape){
         case "triangle":
           fill(255, 0, 0);
@@ -58,11 +55,9 @@ class Points {
           ellipse(x+us.width/8, y+us.height/12, 10, 10);
           return;
       }
-    //  i++;
-    //}
   }
   
-   void displayUfo() {
+   void displayUfo() {                                                                                                    //displays points as ufo image
     noStroke();
     image(ufo, x+us.width/8, y+us.height/12, 50,50);
     return;
@@ -76,7 +71,7 @@ class Points {
     }
   }
   
-  boolean overEvent() {
+  boolean overEvent() {                                                                                                   //checks whether the mouse is over point
     if (mouseX > x+us.width/8-5 && mouseX < x+us.width/8+5 && mouseY > y+us.height/12-5 && mouseY < y+us.height/12+5){
       return true;
     } else {
@@ -90,7 +85,8 @@ class Points {
   void showInfo(){
     textAlign(LEFT);
     if(overEvent() && mousePressed){
-     // box
+      
+      // box
       fill(229, 79, 220);
       stroke(#0450ff);
       strokeWeight(3);
@@ -98,7 +94,7 @@ class Points {
       rect(width/25+us.width*1.5+3, height/30+height/10.3, width/5.75, height/4.5);
       //4*width/5-10, 2*height/3-10 ,width/5, height/3
       
-     // text
+      // text
       noStroke();
       fill(0);
       textSize(15);
