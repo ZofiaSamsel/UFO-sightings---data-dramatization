@@ -6,56 +6,50 @@ void setup() {
   //size(1600,900);
   fullScreen();
 
-
 // loads
   data = loadTable("data/ufo.csv");
   
   bg = loadImage("data/background.jpg");
-  //bg.resize(width,height);
+  ufo =loadImage("data/ufo.png");
+  us = loadImage("data/mapa1.png");
   frame = loadImage("data/frame.png");
   frame.resize(width, height);
   
   ship = loadImage("data/ship.png");
   ship.resize(400,240);
-  
  
-  ufo =loadImage("data/ufo.png");
-  
-  us = loadImage("data/mapa1.png");
-  
   font = createFont("data/INVASION2000.TTF", 20);
   textFont(font);
-
 
 // initialisation of objects 
   ufo1 = new SoundFile(this, "data/landing1.wav");
   ufo2 = new SoundFile(this, "data/ufo_landing.wav");
-  //ufo1.play();
-  //ufo1.loop();
+  
   game1 = new Button(width/8, height*5/6, 100, 70, "Home", 229, 79, 220);
   launch = new Button(width/8+120, height*5/6 , 100, 70, "Years", 229, 79, 220);
   animation = new Button(width/8+240, height*5/6 , 100, 70, "Play", 229, 79, 220);
   game2 = new Button(width/8+360, height*5/6 , 100, 70, "Exit", 229, 79, 220);
+  
   ship1 = new Ship(ship, shipX, shipY, 400, 240);
+  
   slider = new Slider(width/25, height/30+us.height*1.5+3, us.width*1.5+3, 30, 10);
   
   pts = new Points[data.getRowCount()];
 
-
-// other
+  // read data from ufo.csv file
   for(int i = 1; i < data.getRowCount(); i++) {
     pts[i] = new Points(i);
     pts[i].getData();
   }
 }
 
-
 // ============================================================================================= 
 //  draw() loop
 // ============================================================================================= 
 void draw() {
-  screenMode();
-  
+  screenMode(); 
+  buttons();
+   
   if(start == 1) { 
     startScreen();
   }
@@ -66,8 +60,6 @@ void draw() {
     animationScreen();
   }
   
-   buttons();
-    
    if (firstMousePress) {
     firstMousePress = false;
   }
@@ -95,7 +87,6 @@ void mousePressed() {
   if (!firstMousePress) {
     firstMousePress = true;
   }
-  
   ufo2.stop();
 }
 
@@ -138,6 +129,7 @@ void buttons(){
 //  displaying screen with map, slider, description
 // ============================================================================================= 
 void mapScreen(){
+    ufo1.stop();
     slider.getPos();
     
     image(bg,0,0,width,height);
@@ -163,14 +155,16 @@ void mapScreen(){
 void startScreen(){
   image(bg,0,0,width,height);
   image(frame, 0, 0);
-  if(click == true){
-    shipX = mouseX;
-    shipY = mouseY;
-   }
   
   image(ship, shipX, shipY);
   ship1.update();
   ship1.render();
+  
+    if(click == true){
+    shipX = mouseX;
+    shipY = mouseY;
+   }
+  ufo1.stop();
 }
 
 
