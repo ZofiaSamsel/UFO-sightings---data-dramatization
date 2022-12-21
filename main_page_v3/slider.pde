@@ -92,12 +92,14 @@ class Slider {
 //  displays slider
 // =============================================================================================
   void display() {
-
-    noStroke();                                            // slider bar   
+    
+    // slider bar   
+    noStroke();                                            
     fill(#0450ff);
     rect(xpos, ypos, swidth, sheight);
-   
-    if (over || locked) {                                  // slider 
+    
+    // slider 
+    if (over || locked) {                                 
       fill(#D120C8);
     } else {
       fill(229, 79, 220);
@@ -142,8 +144,9 @@ class Slider {
       }
     }
   }
-  
-    void displayYearAnim(){                       //displays years during animation
+
+//displays years during animation
+    void displayYearAnim(){                       
       noStroke();
       fill(#0450ff);
       rect(xpos, ypos, swidth, sheight);
