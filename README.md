@@ -19,3 +19,8 @@ If the mouse is over one of the points, a text box appears that displays more de
 After clicking the Play button, the user can see an animation that displays the occurrence of the sightings with the passing of the years. 
 
 Below you can watch a video demonstrating the data dramatization.
+
+
+
+https://user-images.githubusercontent.com/79842403/210437452-2e5c4ded-2a56-4776-99f1-8dc2e6ddc21d.mp4
+
